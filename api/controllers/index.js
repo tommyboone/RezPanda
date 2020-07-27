@@ -1,13 +1,14 @@
-var db = require("../models");
-// var Slot = require("../models/slot");
-var Nexmo = require("nexmo");
+const db = require("../models");
+const Slot = require("../models/slot");
+const Nexmo = require("nexmo");
+const Appointment = require("../models/appointment");
 
 module.exports = {
-  all(req, res) {
+  all: function (req, res) {
     // Returns all appointments
     db.Appointment.find({}).exec((err, appointments) => res.json(appointments));
   },
-  create(req, res) {
+  create: function (req, res) {
     var requestBody = req.body;
     var newslot = new Slot({
       slot_time: requestBody.slot_time,
