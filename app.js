@@ -10,6 +10,7 @@ var index = require("./routes/index");
 const api = require("./routes/api/index");
 var app = express();
 mongoose.Promise = global.Promise;
+const port = process.env.PORT || 3001;
 //Adds connection to database using mongoose
 //for <dbuser>:replace with your username, <dbpassword>: replace with your password.
 //<DATABASE_URL>: replace with database url, example:ds234562.mlab.com:17283
@@ -77,21 +78,9 @@ app.use(function (err, req, res, next) {
 /**
  * Module dependencies.
  */
-const express = require("express");
-var app = require("../app");
+
 var debug = require("debug")("api:server");
 var http = require("http");
-
-/**
- * Get port from environment and store in Express.
- */
-
-var port = normalizePort(process.env.PORT || "8083");
-app.set("port", port);
-
-/**
- * Create HTTP server.
- */
 
 var server = http.createServer(app);
 
