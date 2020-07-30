@@ -295,7 +295,7 @@ class Appointment extends Component {
     return (
       <div>
         <AppBar
-          title="Appointment Scheduler"
+          title="RezPanda"
           iconClassNameRight="muidocs-icon-navigation-expand-more"
         />
         <section
