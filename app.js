@@ -18,8 +18,10 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rezpanda", {
   useNewUrlParser: true,
 });
 
+app.use(express.static(path.join(__dirname, "/client/build")));
+
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "/build/index.html"));
+  res.sendFile(path.join(__dirname, "/client/build", "index.html"));
 });
 //This enabled CORS, Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources (e.g. fonts)
 //on a web page to be requested from another domain outside the domain from which the first resource was served
