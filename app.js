@@ -21,20 +21,28 @@ app.get("/", function (req, res) {
 });
 //This enabled CORS, Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources (e.g. fonts)
 //on a web page to be requested from another domain outside the domain from which the first resource was served
-app.all("*", function (req, res, next) {
-  // CORS headers
-  res.header("Access-Control-Allow-Origin", "*"); // restrict it to the required domain
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
-  // Set custom headers for CORS
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Content-type,Accept,X-Access-Token,X-Key"
+app.use(function (req, res, next) {
+  // Website you wish to allow to connect
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+
+  // Request methods you wish to allow
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
   );
-  if (req.method == "OPTIONS") {
-    res.status(200).end();
-  } else {
-    next();
-  }
+
+  // Request headers you wish to allow
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type"
+  );
+
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader("Access-Control-Allow-Credentials", true);
+
+  // Pass to next layer of middleware
+  next();
 });
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
