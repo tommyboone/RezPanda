@@ -2,6 +2,10 @@
   "name": "api",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "12.x",
+    "yarn": "1.x"
+  },
   "scripts": {
     "start": "node app.js",
     "heroku-postbuild": "cd client && yarn install && yarn run build"
